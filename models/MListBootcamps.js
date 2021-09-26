@@ -25,4 +25,4 @@ const listSchema = mongoose.Schema({
         default: true
     }
 })
-module.exports = mongoose.model('List',listSchema)
+module.exports = mongoose.model('ListBootcamps',listSchema)
