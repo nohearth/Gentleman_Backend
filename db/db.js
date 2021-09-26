@@ -5,7 +5,10 @@ let url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@clust
 
 moongose
     .connect(url)
-    .then(db => console.log("DB is connected"))
+    .then(db => {
+        console.log("DB is connected")
+        console.log(url)
+    })
     .catch(err => {
         console.error(err)
         console.log(url)
