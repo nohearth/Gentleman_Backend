@@ -1,7 +1,7 @@
-const express = require('express') //lib-express
-const cors = require('cors')    //lib-cors
+const express = require('express')
+const cors = require('cors')
 
-//  connection
+// Databse connection
 require('./db/db')
 
 const port = process.env.PORT || 3000
