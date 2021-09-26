@@ -1,5 +1,5 @@
 'use strict'
 
 module.exports = function (app) {
-    app.use('/api/user', require('./RUser'))
+    app.use('/user', require('./RUser'))
 }

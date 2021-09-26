@@ -14,7 +14,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.send('Connected')
 })
 app.listen(port)
