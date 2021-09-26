@@ -4,6 +4,7 @@
   "description": "Project for Gentleman Hackathon",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "nodemon app.js"
   },
   "repository": {
@@ -24,5 +25,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.13"
+  },
+  "engines": {
+    "node": "14.17.6"
   }
 }
