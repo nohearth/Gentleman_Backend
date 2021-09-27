@@ -8,71 +8,71 @@
     </tr>
 </table>
 
-_El proyecto propuesto por el Hackathon Gentleman Programing 2021, represento un desafio a nuestras habilidades como desarrolladores web , en el cual se llevo acabo un sistema realizado a base de JavaScript y librerias que derivan de este.El proyecto plantea la relación de bootcamps,en donde usuario y empresa puedan iniciar sesión/registrarse , a las empreas añadir bootcamps y los usuarios inscribirse en dichos bootcamps._
+_The project proposed by the Hackathon Gentleman Programing 2021, represented a challenge to our skills as web developers, in which a system made with JavaScript and libraries derived from it was carried out.The project raises the relationship of bootcamps, where User and company can login / register, companies add bootcamps and users register in said bootcamps._
 
 
-### Pre-requisitos 📋
+### Pre requirements 📋
 
-* Última versión estable de [Node.js](https://nodejs.org/en/)
-* Para el proyecto se usó [Visual Studio Code](https://code.visualstudio.com/) como editor de texto para la 
-elaboración del Backend, pero se puede utilizar otro editor de texto.
+* Latest stable version of [Node.js](https://nodejs.org/en/)
+* For the project [Visual Studio Code](https://code.visualstudio.com/) was used as a text editor for the
+elaboration of the Backend, but you can use another text editor.
 
-### Instalación 🔧
+### Installation 🔧
 
-_Para comenzar, se procede con la descarga del repositorio. Para ello se debe abrir la consola,
-ubicarse en la carpeta en la que desea guardar el proyecto y ejecutar el siguiente comando:_
+_To begin, proceed with the download of the repository. To do this, the console must be opened,
+go to the folder where you want to save the project and run the following command:_
 
 ```
 git clone https://github.com/nohearth/Gentleman_Backend.git
 ```
-_Luego, situarse en la carpeta clonada del repositorio "Gentleman_Backend"._
+_Then, go to the cloned folder of the "Gentleman Backend" repository._
 
-_Para el caso de un Sistema Operativo Windows, con el comando:__
+_In the case of a Windows Operating System, with the command:__
 
 ```
 cd Gentleman_Backend
 ```
 
-Luego, se instalan las dependencias del frontend. Cabe destacar que hay diferentes maneras de realizar esto._
+_Then, the Backend dependencies are installed._
 
 _Con npm:_
 
 ```
 npm install
 ```
-_Una vez se logre la instalación de las dependencias, el backend está listo para desplegarse._
+_Once the dependencies are installed, the backend is ready to be deployed._
 
-## Despliegue 📦
+## Deployment 📦
 
-* _Para realizar un desplegue local (localhost:3000) del backend, se procede a ejecutar uno de los siguientes comandos:_
+* _To perform a local deployment (localhost: 3000) of the backend, proceed to execute one of the following commands:_
 
-_Con npm:_
+_with npm:_
 
 ```
 npm run dev
 ```
-## Construido con 🛠️
-#[Node.js](https://nodejs.org/es/) - El Framework web usado.
+## Built with 🛠️
+#[Node.js](https://nodejs.org/es/) - The web framework used.
 
-#[MongoDB Atlas](https://www.mongodb.com/es/cloud/atlas) - Es la base de datos como servicio que permite implementar, utilizar y escalar una base de datos de MongoDB con tan solo unos pocos clics.
+#[MongoDB Atlas](https://www.mongodb.com/es/cloud/atlas) - It is the database as a service that allows you to deploy, use and scale a MongoDB database with just a few clicks.
 
-#[Mongoose](https://www.npmjs.com/package/mongoose) - Libreria de Node.js que nos permite escribir consultas para una base de datos de MongooDB, con características como validaciones, construcción de queries, middlewares, conversión de tipos y algunas otras, que enriquecen la funcionalidad de la base de datos.
+#[Mongoose](https://www.npmjs.com/package/mongoose) - Node.js library that allows us to write queries for a MongooDB database, with features such as validations, query construction, middleware, type conversion and some others, which enrich the functionality of the database.
 
-#[Express](https://www.npmjs.com/package/express) - Librira de Node.js que facilita la escritura de manejadores de peticiones con diferentes verbos HTTP en diferentes caminos URL (rutas)
+#[Express](https://www.npmjs.com/package/express) - Node.js library that makes it easy to write request handlers with different HTTP verbs in different URL paths (routes)
 
-#[Bcrypt.js](https://www.npmjs.com/package/bcryptjs) - Bcrypt optimizado en JavaScript sin dependencias. Compatible con el enlace bcrypt de C ++ en node.js y también funciona en el navegador.
+#[Bcrypt.js](https://www.npmjs.com/package/bcryptjs) - Bcrypt optimized in JavaScript without dependencies. Supports C ++ bcrypt binding in node.js and works in browser too.
 
-#[Cors](https://www.npmjs.com/package/cors) - Libreria de node.js para proporcionar un middleware Connect / Express que se puede usar para habilitar CORS con varias opciones.
+#[Cors](https://www.npmjs.com/package/cors) - Node.js library to provide a Connect / Express middleware that can be used to enable CORS with various options.
 
-#[Dotenv](https://www.npmjs.com/package/dotenv) - Dotenv es un módulo de dependencia cero que carga variables de entorno desde un .envarchivo a process.env. El almacenamiento de la configuración en el entorno por separado del código se basa en la metodología de la aplicación de doce factores.
+#[Dotenv](https://www.npmjs.com/package/dotenv) - Dotenv is a zero dependency module that loads environment variables from an .env file to process.env. Storing the settings in the environment separately from the code is based on the twelve factor application methodology.
 
-#[Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - Esto fue desarrollado contra draft-ietf-oauth-json-web-token-08. Hace uso de node-jws
+#[Jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) - This was developed against draft-ietf-oauth-json-web-token-08. It makes use of node-jws.
 
-#[Nodemon](https://www.npmjs.com/package/nodemon) - Es una herramienta que ayuda a desarrollar aplicaciones basadas en node.js al reiniciar automáticamente la aplicación de nodo cuando se detectan cambios de archivo en el directorio.
+#[Nodemon](https://www.npmjs.com/package/nodemon) - It is a tool that helps to develop node.js based applications by automatically restarting the node application when file changes are detected in the directory.
 
-## Autores ✒️
+## Authors ✒️
 
-_Los autores de este proyecto son:_
+_The authors of this project are:_
 
 * **Gustavo Rivero** - [gustavoerivero](https://github.com/gustavoerivero)
 * **Dany Karam**  - [Ryuuji14](https://github.com/Ryuuji14)
