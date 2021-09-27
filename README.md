@@ -8,7 +8,7 @@
     </tr>
 </table>
 
-_Para dicho proyecto propuesto por el Hackathon Gentleman Programing 2021, represento un desafio a nuestras habilidades como desarrolladores web , en el cual se llevo acabo un sistema realizado a base de JavaScript y librerias que derivan de este.El proyecto plantea la relación de bootcamps,en donde usuario y empresa puedan iniciar sesión/registrarse , a las empreas añadir bootcamps y los usuarios inscribirse en dichos bootcamps._
+_El proyecto propuesto por el Hackathon Gentleman Programing 2021, represento un desafio a nuestras habilidades como desarrolladores web , en el cual se llevo acabo un sistema realizado a base de JavaScript y librerias que derivan de este.El proyecto plantea la relación de bootcamps,en donde usuario y empresa puedan iniciar sesión/registrarse , a las empreas añadir bootcamps y los usuarios inscribirse en dichos bootcamps._
 
 
 ### Pre-requisitos 📋
