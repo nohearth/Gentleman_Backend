@@ -1,4 +1,5 @@
-
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const mUser = require('../models/MUser')
 const resp = require('../utils/responses')
 const validate = require('../utils/validate')
@@ -19,7 +20,7 @@ async function createUser(req, res) {
             name: value.name,
             userName: value.userName,
             email: value.email,
-            password: value.password,
+            password: bcrypt.hashSync(value.password, 8),
             socialNetwork: value.socialNetwork,
             country: value.country,
             repository: value.repository,
@@ -28,6 +29,7 @@ async function createUser(req, res) {
         })
     
         const saveUser = await user.save()
+        
         resp.makeResponsesOkData(res, saveUser, "UCreated")
     } catch (e) {
         resp.makeResponsesException(res,e)
@@ -46,6 +48,21 @@ async function login(req, res) {
         if (!valPass) {
             return resp.makeResponsesError(res, "ULoginError2")
         }
+
+        const token = jwt.sign({ id: valUser._id }, "Flamethyst-secret", { expiresIn: 86400 })
+        const user = {
+            name: valUser.name,
+            userName: valUser.userName,
+            email: valUser.email,
+            socialNetwork: valUser.socialNetwork,
+            country: valUser.country,
+            repository: valUser.repository,
+            description: valUser.description,
+            idRole: valUser.idRole,
+            token: token 
+        }
+
+        resp.makeResponsesOkData(res, user, "Success")
     } catch (e) {
         resp.makeResponsesException(res,e)
     }
@@ -108,5 +125,6 @@ module.exports = {
     getAllUsers,
     getUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 }

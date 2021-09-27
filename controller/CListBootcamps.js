@@ -1,22 +1,28 @@
 
-const { response } = require('express')
 const mListBootcamps = require('../models/MListBootcamps')
+const mBootcamp = require('../models/MBootcamp')
+const mUser = require('../models/MUser')
 const resp = require('../utils/responses')
 
 
 async function crearteListBootcamps(req,res){
     try {
         const value = req.body
-        const valListBootcamps = await mListBootcamps.findById({
-            idUser:value.idUser,
-            idBootcamps:value.idBootcamps
+        const user = await mUser.findOne({
+            _id: value.idUser
         })
-        if(valListBootcamps){
-            return resp.makeResponsesError(res,"LFound")
+        if (!user) {
+            resp.makeResponsesError(res, "UNotFound")
+        }
+        const bootcamp = await mBootcamp.findOne({
+            _id: value.idBootcamp
+        })
+        if (!bootcamp) {
+            resp.makeResponsesError(res, "BNotFound")
         }
         const listBootcamps = new mListBootcamps({
             idUser:value.idUser,
-            idBootcamps:value.idBootcamps,
+            idBootcamp:value.idBootcamps,
             isApply:value.isApply
         })
         const saveListBootcamps = await listBootcamps.save()
@@ -50,13 +56,21 @@ async function updatelistBootcamps(req,res){
         if(!listBootcamps){
             return resp.makeResponsesError(res,"LNotFound")
         }
+        if (!user) {
+            resp.makeResponsesError(res, "UNotFound")
+        }
+        const bootcamp = await mBootcamp.findOne({
+            _id: value.idBootcamp
+        })
+        if (!bootcamp) {
+            resp.makeResponsesError(res, "BNotFound")
+        }
         const saveListBootcamps= await mListBootcamps.updateOne({
-            idUser:data.idUser,
-            idBootcamps:data.idBootcamps
+            _id: req.params.id
         },{
             $set: data
         })
-        resp.makeResponsesOkData(res,saveListBootcamps,"Updated")
+        resp.makeResponsesOkData(res,saveListBootcamps,"LUpdated")
 
     }catch(e){
         resp.makeResponsesException(res,e)
@@ -72,7 +86,7 @@ async function deleteListBootcamps(req,res){
         const deleteListBootcamps = await mListBootcamps.deleteOne({
             _id:listBootcamps._id
         })
-        resp.makeResponsesOkData(res,deleteListBootcamps,"Updated")
+        resp.makeResponsesOkData(res,deleteListBootcamps,"LDeleted")
     } catch (e) {
         resp.makeResponsesException(res,e)
     }
