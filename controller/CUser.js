@@ -94,7 +94,7 @@ async function updateUser(req, res) {
             return resp.makeResponsesError(res, "UNotFound")
         }
         const saveUser = await mUser.updateOne({
-            email: data.email
+            _id: req.params.id
         }, {
             $set: data
         })
@@ -112,7 +112,7 @@ async function deleteUser(req, res) {
             return resp.makeResponsesError(res, "UNotFound")
         }
         const saveUser = await mUser.deleteOne({
-            _id: user._id
+            _id: req.params.id
         })
         resp.makeResponsesOkData(res, saveUser ,"UPdated")
     } catch (e) {

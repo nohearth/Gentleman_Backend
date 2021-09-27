@@ -53,7 +53,7 @@ async function updateBootcamp(req,res){
     const data = res.body
     try {
         const saveBootcamp = await mBootcamp.updateOne({
-            id: data.id
+            _id: req.params.id
         },{
             $set:data
         })
@@ -71,9 +71,7 @@ async function deleteBootcamp(req,res){
     const data = res.body
     try {
         const deleteBootcamp = await mBootcamp.deleteOne({
-            id:data.id
-        },{
-            $set:data
+            _id: req.params.id
         })
         resp.makeResponsesOk(res, "BDeleted")
     } catch (e) {
