@@ -14,5 +14,9 @@
     "BUpdated": "Bootcamp updated",
     "BDeleted": "Bootcamp deleted",
     "BName": "Error, already exits one Bootcamp with that name",
-    "BNotFound": "Error, bootcamp not found"
+    "BNotFound": "Error, bootcamp not found",
+    "LCreated": "List created",
+    "LUpdated": "List updated",
+    "LDeleted": "List deleted",
+    "LNotFound": "List not found"
 }
