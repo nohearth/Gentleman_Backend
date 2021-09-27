@@ -45,37 +45,32 @@ async function getBootcamp(req, res) {
 }
 async function updateBootcamp(req,res){
     const bootcamp = await mBootcamp.findOne({_id: req.params.id})
-
+    const data = res.body
     if (!bootcamp) {
         return resp.makeResponsesError(res, "BNotFound")
     }
-
-    const data = res.body
     try {
         const saveBootcamp = await mBootcamp.updateOne({
-            id: data.id
+            _id:req.params.id 
         },{
             $set:data
         })
-        resp.makeResponsesOk(res, "BUpdated")
+        resp.makeResponsesOkData(res,saveBootcamp, "BUpdated")
     } catch (e) {
         resp.makeResponsesException(res,e)
     }
 }
 async function deleteBootcamp(req,res){
-    const bootcamp = await mBootcamp.findOne({_id: req.params.id})
+    try {
+        const bootcamp = await mBootcamp.findOne({_id: req.params.id})
 
     if (!bootcamp) {
         return resp.makeResponsesError(res, "BNotFound")
     }
-    const data = res.body
-    try {
         const deleteBootcamp = await mBootcamp.deleteOne({
-            id:data.id
-        },{
-            $set:data
+            _id:req.params.id
         })
-        resp.makeResponsesOk(res, "BDeleted")
+        resp.makeResponsesOkData(res, deleteBootcamp,"BUpdated")
     } catch (e) {
         resp.makeResponsesException(res,e)
     }
