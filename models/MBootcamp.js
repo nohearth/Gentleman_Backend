@@ -7,6 +7,11 @@ const bootcampsSchema = mongoose.Schema({
         type: Schema.ObjectId,
         ref:'User'
     },
+    name:{
+        type: String,
+        required:true,
+        maxLength:14
+    },
     description: {
         type: String,
         required:true,
