@@ -79,5 +79,3 @@ _The authors of this project are:_
 * **Oswaldo Yanez**  - [WolvesDevelopers](https://github.com/WolvesDevelopers)
 * **Wilder Pérez**  - [Sr-Wild](https://github.com/Sr-Wild)
 * **Simón Velazquez**  - [nohearth](https://github.com/nohearth)
-
-
