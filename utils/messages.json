@@ -3,11 +3,16 @@
     "UCreated": "User created",
     "UUpdated": "User updated",
     "UDeleted": "User deleted",
-    "UNotFound": "Error, not found user",
+    "UNotFound": "Error, user not found",
     "UFound": "Error, email has been used",
     "UVoid": "Error, not data",
     "ULogin": "Login success",
     "ULoginError1": "Error, the user don't exits",
     "UloginError2": "Error, incorrect password",
-    "RCreated": "Role created"
+    "RCreated": "Role created",
+    "BCreated": "Bootcamp created",
+    "BUpdated": "Bootcamp updated",
+    "BDeleted": "Bootcamp deleted",
+    "BName": "Error, already exits one Bootcamp with that name",
+    "BNotFound": "Error, bootcamp not found"
 }

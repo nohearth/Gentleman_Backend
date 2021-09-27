@@ -46,6 +46,10 @@ async function login(req, res) {
         if (!valPass) {
             return resp.makeResponsesError(res, "ULoginError2")
         }
+
+        const token = valUSer.generateToken()
+        valUser.token = token
+        resp.makeResponsesOkData(res, valUser, "Success")
     } catch (e) {
         resp.makeResponsesException(res,e)
     }

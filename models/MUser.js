@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = mongoose.Schema({
     
@@ -62,6 +63,12 @@ const userSchema = mongoose.Schema({
         default: true
     }
 })
+
+userSchema.methods.generateToken = async function () {
+    const user = this
+    const token = jwt.sign({ id: user._id }, "Flamethyst-secret", { expiresIn: 86400 })
+    return token
+}
 
 userSchema.pre("save", async function(next) {
     const user = this
