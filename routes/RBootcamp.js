@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const cBootcamp = require('../controller/CBootcamp')
 
-router.post('/signup',cBootcamp.crearteBootcamp)
+router.post('/',cBootcamp.crearteBootcamp)
 router.get('/all',cBootcamp.getAllBootcamps)
 router.get('/user/:id', cBootcamp.getBootcampsByUser)
 router.get('/:id',cBootcamp.getBootcamp)
