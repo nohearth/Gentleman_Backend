@@ -3,8 +3,8 @@
 <table>
     <tr>
         <!-- Do not translate this table -->
-        <td><a href="./README.md"> Inglés </a></td>
-        <td><a href="./README.ES.md"> Español </a></td>
+        <td><a href="./README.md"> English </a></td>
+        <td><a href="./README.ES.md"> Spanish </a></td>
     </tr>
 </table>
 
