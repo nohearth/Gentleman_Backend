@@ -6,9 +6,9 @@ const listSchema = mongoose.Schema({
         type: Schema.ObjectId,
         ref:'User'
     },
-    idBootcamps:{
+    idBootcamp:{
         type: Schema.ObjectId,
-        ref:'Bootcamps'
+        ref:'Bootcamp'
     },
     isApply:{
         type:Boolean,
@@ -30,4 +30,4 @@ const listSchema = mongoose.Schema({
         default: true
     }
 })
-module.exports = mongoose.model('ListBootcamps',listSchema)
+module.exports = mongoose.model('ListBootcamp',listSchema)

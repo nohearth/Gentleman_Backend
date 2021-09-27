@@ -1,14 +1,28 @@
 
 const mListBootcamps = require('../models/MListBootcamps')
+const mBootcamp = require('../models/MBootcamp')
+const mUser = require('../models/MUser')
 const resp = require('../utils/responses')
 
 
 async function crearteListBootcamps(req,res){
     try {
         const value = req.body
+        const user = await mUser.findOne({
+            _id: value.idUser
+        })
+        if (!user) {
+            resp.makeResponsesError(res, "UNotFound")
+        }
+        const bootcamp = await mBootcamp.findOne({
+            _id: value.idBootcamp
+        })
+        if (!bootcamp) {
+            resp.makeResponsesError(res, "BNotFound")
+        }
         const listBootcamps = new mListBootcamps({
             idUser:value.idUser,
-            idBootcamps:value.idBootcamps,
+            idBootcamp:value.idBootcamps,
             isApply:value.isApply
         })
         const saveListBootcamps = await listBootcamps.save()
@@ -41,6 +55,15 @@ async function updatelistBootcamps(req,res){
         const data = req.body
         if(!listBootcamps){
             return resp.makeResponsesError(res,"LNotFound")
+        }
+        if (!user) {
+            resp.makeResponsesError(res, "UNotFound")
+        }
+        const bootcamp = await mBootcamp.findOne({
+            _id: value.idBootcamp
+        })
+        if (!bootcamp) {
+            resp.makeResponsesError(res, "BNotFound")
         }
         const saveListBootcamps= await mListBootcamps.updateOne({
             _id: req.params.id

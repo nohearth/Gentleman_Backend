@@ -32,5 +32,5 @@ const bootcampsSchema = mongoose.Schema({
         default: true
     }
 })
-module.exports = mongoose.model('Bootcamps',bootcampsSchema)
+module.exports = mongoose.model('Bootcamp',bootcampsSchema)
 

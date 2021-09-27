@@ -1,6 +1,4 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
 
 const userSchema = mongoose.Schema({
     
@@ -21,7 +19,7 @@ const userSchema = mongoose.Schema({
     password:{
         type: String,
         required: true,
-        maxLength:8
+        maxLength: 60
     },
     email:{
         type: String,
@@ -64,17 +62,4 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.methods.generateToken = async function () {
-    const user = this
-    const token = jwt.sign({ id: user._id }, "Flamethyst-secret", { expiresIn: 86400 })
-    return token
-}
-
-userSchema.pre("save", async function(next) {
-    const user = this
-    if (user.isModififed("password")) {
-        user.password = await bcrypt.hash(user.password, 8)
-    }
-    next()
-})
 module.exports = mongoose.model('User',userSchema)
