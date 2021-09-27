@@ -10,6 +10,11 @@ const listSchema = mongoose.Schema({
         type: Schema.ObjectId,
         ref:'Bootcamps'
     },
+    isApply:{
+        type:Boolean,
+        default:true
+    },
+
     createdAt:{
         type: Date,
         default: Date.now()
