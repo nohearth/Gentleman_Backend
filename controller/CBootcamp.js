@@ -1,4 +1,4 @@
-const mBootcamp = require('/models/MBootcamp')
+const mBootcamp = require('../models/MBootcamp')
 
 async function crearteBootcamp(req, res) {
     try{
