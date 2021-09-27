@@ -2,7 +2,7 @@ const mBootcamp = require('../models/MBootcamp')
 const resp = require('../utils/responses')
 
 async function crearteBootcamp(req, res) {
-    try{
+    try {
         const value = req.body
 
         const valBootcamp = await mBootcamp.find({
@@ -10,77 +10,74 @@ async function crearteBootcamp(req, res) {
         })
 
         valBootcamp.forEach((el, index) => {
-            if (el.name === value.name) {
+            if (el[index].name === value.name) {
                 return resp.makeResponsesError(res, "BName")
             }
         })
 
         const bootcamp = new mBootcamp({
-            name:value.name,
-            description:value.description,
-            idUser:value.idUser
+            name: value.name,
+            description: value.description,
+            idUser: value.idUser
         })
         const saveBootcamp = await bootcamp.save()
         resp.makeResponsesOkData(res, saveBootcamp, "BCreated")
-    }catch(e){
-        resp.makeResponsesException(res,e)
+    } catch (e) {
+        resp.makeResponsesException(res, e)
     }
 }
-async function getAllBootcamps(req,res){
+async function getAllBootcamps(req, res) {
     try {
         const bootcamps = await mBootcamp.find()
         resp.makeResponsesOkData(res, bootcamps, "Success")
     } catch (e) {
-        resp.makeResponsesException(res,e)
+        resp.makeResponsesException(res, e)
     }
 }
 
 async function getBootcamp(req, res) {
     try {
-        const bootcamp = await mBootcamp.findOne({_id: req.params.id})
+        const bootcamp = await mBootcamp.findOne({ _id: req.params.id })
         resp.makeResponsesOkData(res, bootcamp, "Success")
     } catch (error) {
-        resp.makeResponsesException(res,e)
+        resp.makeResponsesException(res, e)
     }
 }
-async function updateBootcamp(req,res){
-    const bootcamp = await mBootcamp.findOne({_id: req.params.id})
+async function updateBootcamp(req, res) {
 
-    if (!bootcamp) {
-        return resp.makeResponsesError(res, "BNotFound")
-    }
-
-    const data = res.body
     try {
+        const bootcamp = await mBootcamp.findOne({ _id: req.params.id })
+        const data = res.body
+        if (!bootcamp) {
+            return resp.makeResponsesError(res, "BNotFound")
+        }
         const saveBootcamp = await mBootcamp.updateOne({
-            id: data.id
-        },{
-            $set:data
+            _id: data._id
+        }, {
+            $set: data
         })
-        resp.makeResponsesOk(res, "BUpdated")
+        resp.makeResponsesOkData(res, saveBootcamp, "BUpdated")
     } catch (e) {
-        resp.makeResponsesException(res,e)
+        resp.makeResponsesException(res, e)
     }
 }
-async function deleteBootcamp(req,res){
-    const bootcamp = await mBootcamp.findOne({_id: req.params.id})
+async function deleteBootcamp(req, res) {
 
-    if (!bootcamp) {
-        return resp.makeResponsesError(res, "BNotFound")
-    }
-    const data = res.body
     try {
+        const bootcamp = await mBootcamp.findOne({ _id: req.params.id })
+
+        if (!bootcamp) {
+            return resp.makeResponsesError(res, "BNotFound")
+        }
         const deleteBootcamp = await mBootcamp.deleteOne({
-            id:data.id
-        },{
-            $set:data
+            _id: bootcamp._id
         })
-        resp.makeResponsesOk(res, "BDeleted")
+        resp.makeResponsesOkData(res, deleteBootcamp, "BUpdate")
     } catch (e) {
-        resp.makeResponsesException(res,e)
+        resp.makeResponsesException(res, e)
     }
 }
-module.exports ={
+module.exports = {
     crearteBootcamp,
     getAllBootcamps,
     getBootcamp,
