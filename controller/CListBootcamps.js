@@ -84,7 +84,7 @@ async function deleteListBootcamps(req,res){
             return resp.makeResponsesError(res,"LNotFound")
         }
         const deleteListBootcamps = await mListBootcamps.deleteOne({
-            _id:listBootcamps._id
+            _id:req.params.id
         })
         resp.makeResponsesOkData(res,deleteListBootcamps,"LDeleted")
     } catch (e) {
