@@ -14,6 +14,10 @@ async function crearteListBootcamps(req,res){
         if (!user) {
             resp.makeResponsesError(res, "UNotFound")
         }
+        const user = await mUser.find({_id: req.params.id})
+        if (user.idRole === 2) {
+            return resp.makeResponsesException(res, "Unauthorized") 
+        }
         const bootcamp = await mBootcamp.findOne({
             _id: value.idBootcamp
         })
@@ -51,6 +55,10 @@ async function getListBootcamps(req,res){
 
 async function getListBootcampsByUser(req,res){
     try {
+        const user = await mUser.find({_id: req.params.id})
+        if (user.idRole === 2) {
+            return resp.makeResponsesException(res, "Unauthorized") 
+        }
         const listBootcamps = await mListBootcamps.find({idUser: req.params.id})
         resp.makeResponsesOkData(res,listBootcamps,"Success")
     } catch (e) {

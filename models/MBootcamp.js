@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const bootcampsSchema = mongoose.Schema({
     idUser:{
         type: Schema.ObjectId,
-        ref:'User'
+        ref:'User',
+        required:true
     },
     name:{
         type: String,

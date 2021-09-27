@@ -4,7 +4,8 @@ const userSchema = mongoose.Schema({
     
     idRole:{
         type: Number,
-        ref:'Role'
+        ref:'Role',
+        required:true
     },
     name:{
         type: String,

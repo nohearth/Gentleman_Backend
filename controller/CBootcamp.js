@@ -1,4 +1,5 @@
 const mBootcamp = require('../models/MBootcamp')
+const mUser = require('../models/MUser')
 const resp = require('../utils/responses')
 
 async function crearteBootcamp(req, res) {
@@ -8,6 +9,11 @@ async function crearteBootcamp(req, res) {
         const valBootcamp = await mBootcamp.find({
             idUser: value.idUser
         })
+
+        const user = await mUser.find({_id: req.params.id})
+        if (user.idRole === 1) {
+            return resp.makeResponsesException(res, "Unauthorized") 
+        }
 
         valBootcamp.forEach((el, index) => {
             if (el.name === value.name) {
@@ -46,6 +52,10 @@ async function getBootcamp(req, res) {
 
 async function getBootcampsByUser(req,res){
     try {
+        const user = await mUser.find({_id: req.params.id})
+        if (user.idRole === 1) {
+            return resp.makeResponsesException(res, "Unauthorized") 
+        }
         const bootcamps = await mBootcamp.find({idUser: req.params.id})
         resp.makeResponsesOkData(res,bootcamps,"Success")
     } catch (e) {

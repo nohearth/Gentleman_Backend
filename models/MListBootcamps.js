@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const listSchema = mongoose.Schema({
     idUser:{
         type: Schema.ObjectId,
-        ref:'User'
+        ref:'User',
+        required:true
     },
     idBootcamp:{
         type: Schema.ObjectId,
-        ref:'Bootcamp'
+        ref:'Bootcamp',
+        required:true
     },
     isApply:{
         type:Boolean,
