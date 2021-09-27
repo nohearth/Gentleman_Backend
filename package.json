@@ -1,7 +1,6 @@
 {
   "name": "gentleman_backend",
   "version": "1.0.0",
-
   "description": "Project for Gentleman Hackathon",
   "main": "app.js",
   "scripts": {
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/nohearth/Gentleman_Backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",

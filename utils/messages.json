@@ -1,0 +1,13 @@
+{
+    "Success": "Success",
+    "UCreated": "User created",
+    "UUpdated": "User updated",
+    "UDeleted": "User deleted",
+    "UNotFound": "Error, not found user",
+    "UFound": "Error, email has been used",
+    "UVoid": "Error, not data",
+    "ULogin": "Login success",
+    "ULoginError1": "Error, the user don't exits",
+    "UloginError2": "Error, incorrect password",
+    "RCreated": "Role created"
+}
