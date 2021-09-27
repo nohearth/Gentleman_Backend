@@ -19,8 +19,9 @@ async function crearteBootcamp(req, res) {
             })
         } */
         const bootcamp = new mBootcamp({
-            name: value.name,
-            description: value.description
+            name:value.name,
+            description:value.description,
+            idUser:value.idUser
         })
         const saveBootcamp = await bootcamp.save()
         res.status(200).json({
