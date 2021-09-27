@@ -1,95 +1,105 @@
 
 const mUser = require('../models/MUser')
+const resp = require('../utils/responses')
+const validate = require('../utils/validate')
 
 async function createUser(req, res) {
-    const value = req.body
-    const valUser = await mUser.findOne({
-        email: value.email
-    })
-
-    if (valUser) {
-        return res.status(400).json({
-            Ok: 0,
-            Data: valUser,
-            Message: 'Error, email exists'
-        })
-    }
-
-    const user = new mUser({
-        name: value.name,
-        email: value.email,
-        password: value.password,
-        socialNetwork: value.socialNetwork,
-        country: value.country,
-        repository: value.repository,
-        description: value.description
-    })
     try {
+
+        const value = req.body
+        const valUser = await mUser.findOne({
+            email: value.email
+        })
+
+        if (valUser) {
+            return resp.makeResponsesError(res, "UFound")
+        }
+
+        const user = new mUser({
+            name: value.name,
+            userName: value.userName,
+            email: value.email,
+            password: value.password,
+            socialNetwork: value.socialNetwork,
+            country: value.country,
+            repository: value.repository,
+            description: value.description,
+            idRole: value.idRole 
+        })
+    
         const saveUser = await user.save()
-        res.status(200).json({
-            Ok: 1,
-            Data: saveUser,
-            Message: "Success"
-        })
+        resp.makeResponsesOkData(res, saveUser, "UCreated")
     } catch (e) {
-        res.status(400).json({
-            Ok: 0,
-            Message: e
+        resp.makeResponsesException(res,e)
+    }
+}
+
+async function login(req, res) {
+    try {
+        const valUser = await mUser.findOne({
+            userName: req.body.userName
         })
+        if (!valUser) {
+            return resp.makeResponsesError(res, "ULoginError1")
+        }
+        const valPass = await validate.comparePassword(req.body.password, valUser.password)
+        if (!valPass) {
+            return resp.makeResponsesError(res, "ULoginError2")
+        }
+    } catch (e) {
+        resp.makeResponsesException(res,e)
     }
 }
 
 async function getAllUsers(req, res) {
     try {
         const users = await mUser.find()
-        res.status(200).json({
-            Ok: 1,
-            Data: users,
-            Message: "Success"
-        })
-    } catch (error) {
-        res.status(400).json({
-            Ok: 0,
-            Message: e
-        })
+        resp.makeResponsesOkData(res, users, "Success")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
     }
 }
 
 async function getUser(req, res) {
     try {
         const user = await mUser.findOne({_id: req.params.id})
-        res.status(200).json({
-            Ok: 1,
-            Data: user,
-            Message: "Success"
-        })
-    } catch (error) {
-        res.status(400).json({
-            Ok: 0,
-            Message: e
-        })
+        resp.makeResponsesOkData(res, user, "Success")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
     }
 }
 
 async function updateUser(req, res) {
-    const user = await mUser.findOne({_id: req.params.id})
-    const data = req.body
     try {
+        const user = await mUser.findOne({_id: req.params.id})
+        const data = req.body
+        if (!user) {
+            return resp.makeResponsesError(res, "UNotFound")
+        }
         const saveUser = await mUser.updateOne({
             email: data.email
         }, {
             $set: data
         })
-        res.status(200).json({
-            Ok: 1,
-            Data: saveUser,
-            Message: "Success"
+        resp.makeResponsesOkData(res, saveUser ,"UPdated")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
+    }
+}
+
+async function deleteUser(req, res) {
+    try {
+        const user = await mUser.findOne({_id: req.params.id})
+
+        if (!user) {
+            return resp.makeResponsesError(res, "UNotFound")
+        }
+        const saveUser = await mUser.deleteOne({
+            _id: user._id
         })
-    } catch (error) {
-        res.status(400).json({
-            Ok: 0,
-            Message: e
-        })
+        resp.makeResponsesOkData(res, saveUser ,"UPdated")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
     }
 }
 
@@ -97,5 +107,6 @@ module.exports = {
     createUser,
     getAllUsers,
     getUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
