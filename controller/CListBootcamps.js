@@ -49,6 +49,15 @@ async function getListBootcamps(req,res){
     }
 }
 
+async function getListBootcampsByUser(req,res){
+    try {
+        const listBootcamps = await mListBootcamps.find({idUser: req.params.id})
+        resp.makeResponsesOkData(res,listBootcamps,"Success")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
+    }
+}
+
 async function updatelistBootcamps(req,res){
     try{
         const listBootcamps = await mListBootcamps.findOne({_id: req.params.id})
@@ -96,5 +105,6 @@ module.exports={
     getAllListBootcamps,
     getListBootcamps,
     updatelistBootcamps,
-    deleteListBootcamps
+    deleteListBootcamps,
+    getListBootcampsByUser
 }

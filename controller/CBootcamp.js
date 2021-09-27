@@ -43,6 +43,16 @@ async function getBootcamp(req, res) {
         resp.makeResponsesException(res,e)
     }
 }
+
+async function getBootcampsByUser(req,res){
+    try {
+        const bootcamps = await mBootcamp.find({idUser: req.params.id})
+        resp.makeResponsesOkData(res,bootcamps,"Success")
+    } catch (e) {
+        resp.makeResponsesException(res,e)
+    }
+}
+
 async function updateBootcamp(req,res){
     const bootcamp = await mBootcamp.findOne({_id: req.params.id})
     const data = res.body
@@ -80,5 +90,6 @@ module.exports ={
     getAllBootcamps,
     getBootcamp,
     updateBootcamp,
-    deleteBootcamp
+    deleteBootcamp,
+    getBootcampsByUser
 }
